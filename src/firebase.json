@@ -9,6 +9,16 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/api/**",
+        "dynamicLinks": true,
+        "run": {
+          "serviceId": "website",
+          "region": "us-west1"
+        }
+      }
     ]
   },
   "storage": {
