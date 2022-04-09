@@ -1,0 +1,469 @@
+/*
+Name: Jack Venberg
+Date: 03.30.19
+Section: CSE 154 TA
+
+This is the index.css style for my "About Me" page.
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:800|Montserrat:400,700');
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+a.anchor {
+  display: block;
+  position: relative;
+  top: -100px;
+  visibility: hidden;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.invisible {
+  display: none;
+}
+
+.grow {
+  transition: all .2s ease-in-out;
+}
+
+.grow:hover {
+  transform: scale(1.05);
+}
+
+h1 {
+  font-size: 60px;
+}
+
+p {
+  font-size: 22px;
+}
+
+li {
+  font-size: 20px;
+}
+
+a {
+  color: black;
+}
+
+/************************************************
+----------------- NAV BAR STYLE -----------------
+*************************************************/
+
+nav {
+  z-index: 4;
+  height: 70px;
+  width: 100%;
+  padding-left: 20%;
+  left: 0;
+  top: 0;
+  position: fixed;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+nav, footer {
+  font-family: 'Raleway', sans-serif;
+}
+
+nav > a {
+  height: 100%;
+  padding: 0 10px 0 10px;
+  color: white;
+  mix-blend-mode: difference;
+  display: inline-block;
+  line-height: 70px;
+  font-size: 25px;
+  text-decoration: none;
+}
+
+nav > a:hover {
+  text-decoration: underline;
+}
+
+.default-nav > a {
+  color: black;
+  mix-blend-mode: normal;
+}
+
+.default-nav {
+  background-color: white;
+}
+
+#nav-background {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+}
+
+#nav-background:before {
+  background: inherit;
+  background-color: white;
+  top: 0;
+  content: '';
+  display: block;
+  height: 210px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  transform: skewY(-2deg);
+  transform-origin: 0% 0%;
+  z-index: -3;
+}
+
+#nav-shadow {
+  box-shadow: 0 4px 5px -5px black;
+  height: 70px;
+  width: 150%;
+  position: fixed;
+  z-index: 3;
+}
+
+/*****************************************************
+----------------- MAIN CONTENT STYLE -----------------
+******************************************************/
+
+/* CITATION
+This image is from https://crosscut.com/2015/11/uw-union-push-pits-empowerment-vs-excellence.
+*/
+header {
+  background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../img/uw_med.jpg");
+  display: flex;
+  align-items: center;
+}
+
+
+section {
+  padding: 0 20%;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  background-color: white;
+}
+
+section > nav > a {
+  color: black;
+}
+
+.header-texts {
+  position: relative;
+}
+
+.header-texts > h1:first-child {
+  position: absolute;
+}
+
+.header-texts > a {
+  color: white;
+  text-decoration: none;
+  text-shadow: 0 0 5px black;
+}
+
+.header-info {
+  margin: 0;
+  position: fixed;
+  width: 60%;
+  left: 20%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.header-info > img {
+  border-radius: 50%;
+  width: 350px;
+  height: 350px;
+  box-shadow: 5px 5px 5px black;
+}
+
+.header-info > .header-texts {
+  width: 50%;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+}
+
+footer {
+  box-shadow: 0px 3px 3px 5px rgba(0, 0, 0, 0.6) ;
+  background-color: #212121;
+  height: 100px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer h3 {
+  margin: 0 auto;
+}
+
+.parallax {
+  height: 600px;
+  background-position: center;
+
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  position: relative;
+}
+
+/* Fixes iOS lack of support of fixed attachment */
+@supports (-webkit-touch-callout: none) {
+  .parallax {
+    background-attachment: initial;
+  }
+}
+
+.content:before {
+  background: inherit;
+  top: 0;
+  content: '';
+  display: block;
+  height: 50%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  transform: skewY(-2deg);
+  transform-origin: 0;
+  z-index: -1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  flex-direction: column;
+  padding-bottom: 50px;
+}
+
+.content:after {
+  background: inherit;
+  bottom: 0;
+  content: '';
+  display: block;
+  height: 50%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  transform: skewY(-2deg);
+  transform-origin: 100%;
+  z-index: -1;
+}
+
+.content:last-child:after {
+  display: none;
+}
+
+
+#waterfront {
+  background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../img/waterfront_med.jpg");
+  background-position: center;
+}
+
+#downtown {
+  background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../img/downtown_med.jpg");
+  background-position: center;
+}
+
+.content article {
+  border-bottom: black 2px solid;
+}
+
+/*****************************************************
+----------------- FONT AWESOME STYLE -----------------
+******************************************************/
+
+.fa, .fab {
+  color: white;
+}
+
+.fa-circle {
+  border-radius: 50%;
+  box-shadow: 5px 5px 5px black;
+  margin: 0 3px;
+  padding: 15px;
+  font-size: 20px;
+  width: 20px;
+  text-align: center;
+  text-decoration: none;
+}
+
+p .fa-envelope {
+  margin-right: 10px;
+}
+
+.fa-circle.fa-envelope {
+  background: #d82020;
+}
+
+.fa-github {
+  background: #24292e;
+}
+
+.fa-flickr {
+  background: #F40083;
+}
+
+.fa-linkedin {
+  background: #007BB5;
+}
+
+/***************************************************
+----------------- IMAGE SLIDER STYLE -----------------
+****************************************************/
+
+#slide-container {
+  display: flex;
+  align-items: center;
+}
+
+#slide-container > i {
+  font-size: 2.5em;
+}
+
+#left-btn, #right-btn {
+  cursor: pointer;
+}
+
+.slides {
+  padding: 0 20px;
+  width: calc(100% - 40px - 5em);
+  height: auto;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+/**************************************************
+----------------- ANIMATION STYLE -----------------
+***************************************************/
+
+.blinking-cursor {
+  -webkit-animation: 1.5s blink step-end infinite;
+  -moz-animation: 1.5s blink step-end infinite;
+  -ms-animation: 1.5s blink step-end infinite;
+  -o-animation: 1.5s blink step-end infinite;
+  animation: 1.5s blink step-end infinite;
+}
+
+@keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: white;
+  }
+}
+
+@-moz-keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: white;
+  }
+}
+
+@-webkit-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: white;
+  }
+}
+
+@-ms-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: white;
+  }
+}
+
+@-o-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: white;
+  }
+}
+
+/**************************************************
+----------------- MEDIA QUERY STYLE -----------------
+***************************************************/
+
+@media only screen and (max-width: 1200px) {
+  .header-info {
+    width: 90%;
+    left: 5%;
+  }
+
+  .content > * {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  nav {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .parallax {
+    height: 300px;
+  }
+
+  header.parallax {
+    height: 900px;
+  }
+
+  header img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .header-info {
+    width: 100%;
+    left: 0;
+    flex-direction: column;
+  }
+
+  .header-info > .header-texts {
+    width: 90%;
+  }
+
+  .header-texts > h1 {
+    margin: 0;
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+  .content {
+    padding: 0 10%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  nav, #nav-shadow {
+    display: none;
+  }
+}

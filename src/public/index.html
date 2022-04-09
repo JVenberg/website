@@ -1,13 +1,191 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script src="js/index.js"></script>
-</head>
-<body>
-  <h1>Test Heading</h1>
-</body>
+<!--
+Name: Jack Venberg
+Date: 03.30.19
+Section: CSE 154 TA
+
+This is the index.html file for my "About Me" page.
+-->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Jack Venberg</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#b72025">
+    <meta name="msapplication-TileColor" content="#b72025">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script type="text/javascript" src="js/index.js"></script>
+  </head>
+
+  <body id="home">
+    <div id="nav-shadow" class="hidden"></div>
+    <nav id="top-nav">
+      <div id="nav-background" class="hidden"></div>
+      <a href="#home">Home</a>
+      <a href="#work-experience">Work Experience</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+    </nav>
+
+    <main>
+      <header class="parallax">
+        <div class="header-info">
+          <img src="img/profile.png" alt="">
+          <div class="header-texts">
+            <h1><span id="intro"></span><span id="cursor">|</span></h1>
+            <h1 class="hidden" id="intro-text"><span>Hello! My name is Jack Venberg!</span></h1>
+            <div id="social">
+              <a href="mailto:jvenberg@gmail.com" class="fa-circle fa fa-envelope grow"></a>
+              <a href="https://www.linkedin.com/in/JackVenberg/" class="fa-circle fab fa-linkedin grow"></a>
+              <a href="https://github.com/JVenberg/" class="fa-circle fab fa-github grow"></a>
+              <a href="https://www.flickr.com/photos/jack_venberg" class="fa-circle fab fa-flickr grow"></a>
+            </div>
+            <a href="mailto:jvenberg@gmail.com">
+              <p>
+                <i class="fa fa-envelope"></i>jvenberg@gmail.com
+              </p>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <section class="content">
+        <a class="anchor" id="work-experience"></a>
+        <h1>Work Experience</h1>
+        <article>
+          <h2>Software Engineer</h2>
+          <h3>Rover.com</h3>
+          <h4>Aug, 2021 - Present</h4>
+        </article>
+        <article>
+          <h2>Teaching Assistant, Web Programming</h2>
+          <h3>University of Washington</h3>
+          <h4>Sep, 2018 - Jun, 2021</h4>
+          <ul>
+            <li>
+              Developed working knowledge of full stack web development curriculum, technologies, and
+              best practices using JavaScript, Node.js, PHP, SQL, HTML, and CSS.
+            </li>
+            <li>
+              Spearheaded creation of automated assignment evaluation infrastructure connecting
+              Cypress end-to-end testing framework to grading backend to provide detailed feedback to
+              grading TAs and students.
+            </li>
+            <li>
+              Wrote thorough unit and integration tests for student's full stack assignments.
+            </li>
+            <li>
+              Updated curriculum from PHP backend to Node.js backend and created detailed and
+              in-depth assignments, examples, and code quality guidelines.
+            </li>
+            <li>
+              Created deployment infrastructure utilizing Docker to speed up development.
+            </li>
+            <li>
+              Facilitated weekly active learning lab sessions for students to strengthen their
+              knowledge and confidence in the material.
+            </li>
+            <li>
+              Provided detailed feedback and encouragement to students on course assignments and projects.
+            </li>
+          </ul>
+        </article>
+        <article>
+          <h2>Teaching Assistant, Data Programming</h2>
+          <h3>University of Washington</h3>
+          <h4>Jan, 2019 - Mar, 2021</h4>
+          <ul>
+            <li>
+              Maintained in-depth knowledge of data analysis programming and analytical tools to
+              answer interesting questions using Python, Matplotlib, and NetworkX.
+            </li>
+            <li>
+              Transitioned legacy unit tests to use Python's unittest framework to improve maintainability.
+            </li>
+            <li>
+              Created backend infrastructure that connected Python's unittest to grading backend to
+              provide feedback to grading TAs and students.
+            </li>
+            <li>
+              Wrote thorough unit and integration tests for student's data analytics assignments.
+            </li>
+            <li>
+              Guided students through difficult programming concepts.
+            </li>
+            <li>
+              Lead weekly session teaching course curriculum through examples and active participation.
+            </li>
+          </ul>
+        </article>
+        <article>
+          <h2>High School Lead Intern</h2>
+          <h3>UW Dream Project</h3>
+          <h4>Jan, 2018 - Jan, 2019</h4>
+          <ul>
+            <li>
+              Collaborated closely with school staff and administrators to support student's academic
+              and post-secondary plans.
+            </li>
+            <li>
+              Supported undergraduate mentors through planning and lead weekly high school visits
+              to assigned high school.
+            </li>
+            <li>
+              Developed working knowledge of college curricula, programming, policies and
+              post-secondary pathways.
+            </li>
+            <li>
+              Utilized tracking data to monitor student progress and student interaction.
+            </li>
+            <li>
+              Analyzed assessment data to propose and develop workshops and training for high school students.
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="parallax" id="waterfront"></section>
+
+      <section class="content">
+        <a class="anchor" id="education"></a>
+        <h1>Education</h1>
+        <article>
+          <h2>Computer Science - Data Science</h2>
+          <article>
+            <p>University of Washington</p>
+            <ul>
+              <li>
+                GPA: 3.8
+              </li>
+              <li>
+                Baccalaureate Honors: Cum Laude
+              </li>
+            </ul>
+          </article>
+          <h3>Sep, 2017 - Jun, 2021</h3>
+        </article>
+      </section>
+
+      <section class="parallax" id="downtown"></section>
+
+      <section class="content">
+        <a class="anchor" id="skills"></a>
+        <h1>Skills</h1>
+        <article>
+          <p>JavaScript | Node.js | Python | Java | HTML/CSS | PHP | SQL | MongoDB | PyTorch | Cypress | Docker | Git</p>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <h3>Created by Jack Venberg. &copy; 2019</h3>
+    </footer>
+  </body>
 </html>

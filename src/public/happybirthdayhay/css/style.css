@@ -1,0 +1,58 @@
+
+#greenlake {
+  min-height: 500px;
+}
+
+#gifts {
+  min-height: 350px;
+}
+
+#confetti {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#hb-header {
+  font-size: 8vw;
+  /*font-family: 'Alfa Slab One', cursive;*/
+}
+
+.blink {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+p {
+  line-height: 2rem;
+}
+
+.sidenav-trigger {
+  color: #26a69a;
+}
+
+.parallax-container {
+  line-height: 0;
+  height: 100%;
+  color: rgba(255,255,255,.9);
+}
+
+.parallax-container .section {
+  width: 100%;
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+footer.page-footer {
+  margin: 0;
+}
