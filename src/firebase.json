@@ -13,7 +13,6 @@
     "rewrites": [
       {
         "source": "/api/**",
-        "dynamicLinks": true,
         "run": {
           "serviceId": "website",
           "region": "us-west1"
