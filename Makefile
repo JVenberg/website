@@ -1,5 +1,6 @@
 mkfile_dir := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 project_name := website-346705
+region := us-west1
 image_name := ${project_name}/website
 image_url := gcr.io/${image_name}
 
@@ -22,4 +23,7 @@ run:
 
 push:
 	docker push ${image_url}
+
+deploy:
+	gcloud run deploy website --image ${image_url} --region ${region}
 
