@@ -1,0 +1,4 @@
+cloudbuild.yaml
+node_modules
+npm-debug.log
+test.txt
