@@ -1,13 +1,19 @@
-
 const express = require('express');
+
 const app = express();
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   const name = process.env.NAME || 'World';
-  res.send(`Hello ${name}!`);
+  res.send(`Hello! ${name}!!`);
 });
 
-const port = parseInt(process.env.PORT) || 8080;
-app.listen(port, () => {
-  console.log(`helloworld: listening on port ${port}`);
+app.get('/api/goodbye', (req, res) => {
+  const name = process.env.NAME || 'World';
+  res.send(`Goodbye ${name}!`);
+});
+
+const port = parseInt(process.env.PORT, 10) || 8080;
+const host = '0.0.0.0';
+app.listen(port, host, () => {
+  console.log(`Listening on port: ${port}`);
 });
