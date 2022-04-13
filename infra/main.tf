@@ -24,7 +24,7 @@ resource "google_cloud_run_service" "default" {
       containers {
         args    = []
         command = []
-        image   = "gcr.io/${local.project}/website:latest"
+        image   = "gcr.io/${local.project}/api:latest"
       }
     }
   }
@@ -36,6 +36,8 @@ resource "google_cloud_run_service" "default" {
       metadata[0].annotations["client.knative.dev/user-image"],
     ]
   }
+
+  autogenerate_revision_name = true
 }
 
 data "google_iam_policy" "noauth" {
