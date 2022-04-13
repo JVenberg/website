@@ -3,8 +3,7 @@ project_name := website-346705
 region := us-west1
 image_name := ${project_name}/website
 image_url := gcr.io/${image_name}
-
-all: build push
+api_port := 8080
 
 infra-plan:
 	terraform -chdir=${mkfile_dir}infra plan
@@ -12,18 +11,14 @@ infra-plan:
 infra-apply:
 	terraform -chdir=${mkfile_dir}infra apply
 
-build:
-	docker build ${mkfile_dir}src/api -t ${image_url}
+build-api:
+	docker compose -f src/docker-compose.yml --env-file src/.env build api
 
-shell:
-	docker run --rm -it -p 8080:8080 ${image_url} /bin/sh
+push-api:
+	docker compose -f src/docker-compose.yml --env-file src/.env push api
 
-run:
-	docker run --rm -it -p 8080:8080 ${image_url}
+up:
+	docker compose -f src/docker-compose.yml --env-file src/.env up -d
 
-push:
-	docker push ${image_url}
-
-deploy:
-	gcloud run deploy website --image ${image_url} --region ${region}
-
+down:
+	docker compose -f src/docker-compose.yml --env-file src/.env down
