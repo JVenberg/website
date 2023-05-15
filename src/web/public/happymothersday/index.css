@@ -129,3 +129,15 @@ h1 {
   position: absolute;
   border-radius: 100%;
 }
+
+footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+  color: white;
+}
+
+#music-control span {
+  font-size: 48px;
+}

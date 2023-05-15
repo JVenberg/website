@@ -5,6 +5,8 @@
   ask for, and I hope you had a wonderful Mother's Day!`;
   const TYPE_SPEED = TYPE_TIME / MOTHERS_DAY_TEXT.length * 1000;
 
+  const FOREST_AUDIO = new Audio('forest.mp3');
+
   const FLOWERS = [
     {
       height: 300,
@@ -96,6 +98,22 @@
       const flowerData = FLOWERS[i];
       createFlower(document.getElementById('flower-template'), flowerData, FLOWER_START_TIME + i);
     }
+
+    FOREST_AUDIO.addEventListener('ended', function () {
+      this.currentTime = 0;
+      this.play();
+    }, false);
+
+    document.getElementById('music-control').addEventListener('click', function (event) {
+      const icon = this.firstElementChild;
+      if (icon.textContent.trim() === 'pause') {
+        icon.textContent = 'play_arrow';
+        FOREST_AUDIO.pause();
+      } else {
+        icon.textContent = 'pause';
+        FOREST_AUDIO.play();
+      }
+    });
   });
 
   /**
@@ -121,7 +139,6 @@
    */
   function createFlower(flowerTemplate, flowerData, delay) {
     const flower = flowerTemplate.content.firstElementChild.cloneNode(true);
-    console.log(flower)
     flower.style.height = `${flowerData.height}px`;
     flower.style.width = `${flowerData.innerPedalSize + flowerData.pedalSize * 2 + flowerData.outerPedalSize * 2}px`;
 
