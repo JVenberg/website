@@ -104,7 +104,7 @@
       this.play();
     }, false);
 
-    document.getElementById('music-control').addEventListener('click', function (event) {
+    document.querySelector('footer').addEventListener('click', function (event) {
       const icon = this.firstElementChild;
       if (icon.textContent.trim() === 'pause') {
         icon.textContent = 'play_arrow';
