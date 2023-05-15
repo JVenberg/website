@@ -1,0 +1,131 @@
+body {
+  background-color: #d2d2b4;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.ground {
+  background-color: #c7c7a1;
+  height: 100px;
+  width: 100%;
+  bottom: 0;
+  position: absolute;
+}
+
+.blinking-cursor {
+  animation: 1.5s blink step-end infinite;
+}
+
+@keyframes blink {
+  from {
+    color: transparent;
+    text-shadow: none;
+  }
+
+  50% {
+    color: white;
+    text-shadow: 2px 2px #ff0000;
+  }
+
+  to {
+    color: transparent;
+    text-shadow: none;
+  }
+}
+
+@keyframes turn {
+  from {
+    transform: rotate3d(0, 1, 0, 45deg);
+  }
+
+  to {
+    transform: rotate3d(0, 1, 0, 0deg);
+  }
+}
+
+@keyframes grow {
+  from {
+    bottom: -100%;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+h1 {
+  font-size: 60px;
+  color: white;
+  font-family: 'Pacifico', cursive;
+  margin: 5% auto;
+  width: 80%;
+  text-shadow: 2px 2px #ff0000;
+  text-align: center;
+}
+
+.flowers {
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+.flower {
+  position: relative;
+  bottom: 0;
+  opacity: 0;
+  animation-name: grow;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+.stem {
+  background-color: #b4d28c;
+  width: 10px;
+  height: 100%;
+  bottom: 0;
+  left: 50%;
+  position: relative;
+  transform: translateX(-50%);
+}
+
+.leaf {
+  position: absolute;
+  background-color: #a3c872;
+  width: 48px;
+  height: 48px;
+  box-shadow: 0 0 0 2px #84ae4d;
+  animation-name: turn;
+  animation-duration: 4s;
+  animation-fill-mode: forwards;
+}
+
+.right {
+  border-radius: 60% 0 60% 0;
+  left: calc(50% + 5px);
+  transform: rotate3d(0, 1, 0, 45deg);
+  transform-origin: left;
+}
+
+.left {
+  border-radius: 0 60% 0 60%;
+  left: calc(50% - 55px);
+  transform: rotate3d(0, 1, 0, 45deg);
+  transform-origin: right;
+}
+
+.pedals {
+  z-index: 1;
+  position: absolute;
+  border-radius: 100%;
+}
