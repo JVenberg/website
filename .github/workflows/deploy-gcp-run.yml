@@ -15,3 +15,8 @@ jobs:
         with:
           workload_identity_provider: 'projects/538423338346/locations/global/workloadIdentityPools/github-actions'
           service_account: 'github-action-479701882@website-346705.iam.gserviceaccount.com'
+      - id: deploy
+        uses: 'google-github-actions/deploy-cloudrun@v1'
+        with:
+          service: 'website'
+          image: 'gcr.io/website-346705'
