@@ -19,4 +19,4 @@ jobs:
         uses: 'google-github-actions/deploy-cloudrun@v1'
         with:
           service: 'website'
-          image: 'gcr.io/website-346705/api'
+          image: 'gcr.io/website-346705/api:latest'
