@@ -35,5 +35,6 @@ jobs:
       - name: Deploy website API to Cloud Run
         uses: 'google-github-actions/deploy-cloudrun@v1'
         with:
+          region: 'us-west1'
           service: 'website'
           image: 'us-west1-docker.pkg.dev/website-346705/website/api:latest'
