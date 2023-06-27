@@ -13,10 +13,10 @@ infra-apply:
 	terraform -chdir=${mkfile_dir}infra apply
 
 build-api:
-	docker compose -f src/docker-compose.yml --env-file src/.env build api
+	docker compose -f src/docker-compose.yml build api
 
 push-api:
-	docker compose -f src/docker-compose.yml --env-file src/.env push api
+	docker compose -f src/docker-compose.yml push api
 
 up:
 	docker compose -f src/docker-compose.yml --env-file src/.env up -d

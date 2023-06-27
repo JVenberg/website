@@ -26,8 +26,8 @@ jobs:
 
       - name: Build and Push Container
         run: |-
-          docker compose build api
-          docker compose push api
+          make build-api
+          make push-api
 
       - name: Deploy website API to Cloud Run
         uses: 'google-github-actions/deploy-cloudrun@v1'
