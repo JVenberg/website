@@ -22,7 +22,7 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v1'
 
       - name: Authorize Docker push
-        run: gcloud auth configure-docker
+        run: gcloud auth configure-docker us-west1-docker.pkg.dev
 
       - name: 'Use gcloud CLI'
         run: 'gcloud auth list --filter=status:ACTIVE --format="value(account)"'
