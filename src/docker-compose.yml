@@ -1,6 +1,6 @@
 services:
   api:
-    image: gcr.io/website-346705/api
+    image: us-west1-docker.pkg.dev/website-346705/website/api:latest
     build:
       context: ./api
       dockerfile: ../Dockerfile.api
@@ -14,7 +14,7 @@ services:
       - default
 
   web:
-    image: gcr.io/website-346705/web
+    image: web
     build:
       context: ./web
       dockerfile: ../Dockerfile.web
@@ -39,7 +39,7 @@ services:
       - default
 
   proxy:
-    image: gcr.io/website-346705/proxy
+    image: proxy
     build:
       context: ./proxy
       dockerfile: ../Dockerfile.proxy
