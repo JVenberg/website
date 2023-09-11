@@ -1,6 +1,6 @@
 mkfile_dir := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 project_name := website-346705
-region := us`-west1
+region := us-west1
 image_name := api
 image_hostname := ${region}-docker.pkg.dev
 image_url := ${image_hostname}/${project_name}/${image_name}
@@ -14,6 +14,13 @@ infra-apply:
 
 infra-upgrade:
 	terraform -chdir=${mkfile_dir}infra init -upgrade
+
+infra-cleanup-policy:
+	gcloud artifacts repositories set-cleanup-policies website \
+		--project=${project_name} \
+		--location=${region} \
+		--policy=infra/gcr-cleanup-policy.json \
+		--no-dry-run
 
 build-api:
 	docker compose -f src/docker-compose.yml build api

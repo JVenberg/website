@@ -1,0 +1,11 @@
+[
+    {
+        "name": "delete-all-untagged",
+        "action": {
+            "type": "Delete"
+        },
+        "condition": {
+            "tagState": "untagged"
+        }
+    }
+]
