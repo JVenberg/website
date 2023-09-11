@@ -13,7 +13,7 @@
       {
         "source": "/api{,/**}",
         "run": {
-          "serviceId": "website",
+          "serviceId": "api",
           "region": "us-west1"
         }
       }
