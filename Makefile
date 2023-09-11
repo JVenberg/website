@@ -12,6 +12,9 @@ infra-plan:
 infra-apply:
 	terraform -chdir=${mkfile_dir}infra apply
 
+infra-upgrade:
+	terraform -chdir=${mkfile_dir}infra init -upgrade
+
 build-api:
 	docker compose -f src/docker-compose.yml build api
 

@@ -12,7 +12,7 @@ app.get('/api/goodbye', (req, res) => {
   res.send(`Goodbye ${name}!`);
 });
 
-const port = parseInt(process.env.PORT, 10) || 8080;
+const port = parseInt(process.env.PORT, 10);
 const host = '0.0.0.0';
 app.listen(port, host, () => {
   console.log(`Listening on port: ${port}`);

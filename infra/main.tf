@@ -1,8 +1,19 @@
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "4.81.0"
+    }
+  }
+}
+
 locals {
   project        = "website-346705"
   region         = "us-west1"
   storage_region = "US"
   timezone       = "America/Los_Angeles"
+  repository_id  = "website"
+  image_name     = "api"
 }
 
 provider "google" {
@@ -10,7 +21,7 @@ provider "google" {
 }
 
 resource "google_cloud_run_service" "default" {
-  name     = "website"
+  name     = "api"
   location = local.region
 
   metadata {
@@ -22,9 +33,7 @@ resource "google_cloud_run_service" "default" {
   template {
     spec {
       containers {
-        args    = []
-        command = []
-        image   = "gcr.io/${local.project}/api:latest"
+        image = "us-west1-docker.pkg.dev/${local.project}/${local.repository_id}/${local.image_name}:latest"
       }
     }
   }
@@ -55,29 +64,9 @@ resource "google_cloud_run_service_iam_policy" "noauth" {
   policy_data = data.google_iam_policy.noauth.policy_data
 }
 
-resource "google_container_registry" "registry" {
-  project  = local.project
-  location = local.storage_region
-}
-
-module "gcr_cleaner" {
-  source  = "mirakl/gcr-cleaner/google"
-  version = "1.2.0"
-
-  app_engine_application_location = local.region
-  cloud_run_service_location      = local.region
-  cloud_scheduler_job_time_zone   = local.timezone
-  cloud_scheduler_job_schedule    = "0 4 * * *"
-
-  gcr_repositories = [
-    {
-      region     = local.region
-      project_id = local.project
-      clean_all  = true
-      parameters = {
-        keep           = 1
-        tag_filter_all = "^latest$"
-      }
-    }
-  ]
+resource "google_artifact_registry_repository" "api" {
+  location      = local.region
+  repository_id = local.repository_id
+  description   = "Website Backend Container"
+  format        = "DOCKER"
 }
