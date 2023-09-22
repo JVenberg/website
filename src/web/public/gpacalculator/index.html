@@ -80,7 +80,7 @@
 <script>
     function init() {
         const addBtn = document.querySelectorAll('.add').forEach(btn => {
-            btn.addEventListener('click', addRow);
+            btn.addEventListener('click', () => addRow.call(btn));
             addRow.call(btn);
         })
     }
@@ -103,7 +103,7 @@
         percentGrade.placeholder = `(${minPercent} <= grade% < ${maxPercent})`;
     }
 
-    function addRow() {
+    function addRow(appendAfter) {
         const table = this.closest('main').querySelector('table');
         const template = table.querySelector('template');
         const row = template.content.cloneNode(true);
@@ -115,7 +115,6 @@
             const letterGrade = this.closest('tr');
             for (const option of letterGrade.querySelectorAll('option')) {
                 if (this.value >= parseInt(option.dataset.minPercent)) {
-                    console.log(this.value, option.dataset.minPercent)
                     option.selected = true;
                     break;
                 }
@@ -131,36 +130,40 @@
             percentGrade.value = '';
         });
 
-        letterGrade.addEventListener('input', console.log)
-
-
         const inputs = row.querySelectorAll('input, select');
         inputs.forEach(input => {
             input.addEventListener('keydown', function (e) {
+                const currentRow = this.closest('tr');
                 if (e.key === 'Enter') {
-                    addRow.call(this);
-                    this.closest('tbody').lastElementChild.querySelector(`.${this.className}`).focus();
+                    addRow.call(this, currentRow);
+                    currentRow.nextElementSibling.querySelector(`.${Array.from(this.classList).join('.')}`).focus();
                 } else if (e.key === 'Escape') {
-                    this.closest('tr').previousElementSibling.querySelector(`.${this.className}`).focus();
-                    removeRow.call(this);
+                    if (currentRow.closest('tbody').querySelectorAll('tr').length > 1) {
+                        if (currentRow.previousElementSibling) {
+                            currentRow.previousElementSibling.querySelector(`.${Array.from(this.classList).join('.')}`).focus();
+                        } else {
+                            currentRow.nextElementSibling.querySelector(`.${Array.from(this.classList).join('.')}`).focus();
+                        }
+                        removeRow.call(this);
+                    }
                 }
             });
             input.addEventListener('input', calculate);
         });
 
-        const tbody = table.querySelector('tbody');
-        tbody.appendChild(row);
-        return row
+        if (appendAfter) {
+            appendAfter.after(row);
+        } else {
+            table.querySelector('tbody').appendChild(row);
+        }
     }
 
     function calculate() {
-        console.log(this)
         const main = this.closest('main');
         const rows = main.querySelectorAll('tbody tr');
         let gradePoints = 0;
         let courses = 0;
         for (const row of rows) {
-            console.log(row);
             if (row.querySelector('.letter-grade').value) {
                 const bonus = parseFloat(row.querySelector('.level').value);
                 const [num, den] = row.querySelector('.letter-grade').value.split('/').map(x => parseFloat(x));
