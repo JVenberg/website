@@ -7,6 +7,9 @@
   "display": "standalone",
   "background_color": "#23482F",
   "theme_color": "#2A5A3A",
+  "launch_handler": {
+    "client_mode": "navigate-new"
+  },
   "icons": [
     {
       "src": "icon.png",
