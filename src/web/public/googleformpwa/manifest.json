@@ -3,7 +3,7 @@
   "id": "com.googleformviewer",
   "short_name": "FormViewer",
   "description": "A PWA wrapper for displaying Google Forms.",
-  "start_url": "index.html",
+  "start_url": "https://docs.google.com/forms/d/e/1FAIpQLSdfu1NZ-bG6hj9nveqP99lt5Me82g7JTvnep4m2Ty6qEbYg6w/viewform",
   "display": "standalone",
   "background_color": "#23482F",
   "theme_color": "#2A5A3A",
