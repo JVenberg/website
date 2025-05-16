@@ -7,7 +7,7 @@
   "theme_color": "#2A5A3A",
   "icons": [
     {
-      "src": "/googleformpwa/icon.png",
+      "src": "icon.png",
       "sizes": "512x512",
       "type": "image/png"
     }
