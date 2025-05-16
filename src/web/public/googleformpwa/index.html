@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Viewer</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Form Viewer">
+    <meta name="theme-color" content="#007bff">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Prevents scrollbars on the body */
+            background-color: #f0f0f0; /* Optional: background for the PWA frame */
+        }
+        #formContainer {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .message {
+            font-family: sans-serif;
+            padding: 20px;
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="formContainer">
+        <p class="message" id="loadingMessage">Loading form...</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const formContainer = document.getElementById('formContainer');
+            const loadingMessage = document.getElementById('loadingMessage');
+            const params = new URLSearchParams(window.location.search);
+            const formUrl = params.get('formUrl');
+
+            if (formUrl) {
+                // Basic validation for a Google Form URL (can be made more robust)
+                if (formUrl.startsWith('https://docs.google.com/forms/')) {
+                    // Ensure the URL is embeddable (usually ends with /viewform or has /e/ in it)
+                    let embedUrl = formUrl;
+                    if (embedUrl.includes('/viewform') && !embedUrl.includes('/e/')) {
+                         // Standard viewform URLs might not always embed perfectly or might show extra Google UI.
+                         // For true embedding, the /e/ version is better, often obtained from the "Send" -> "Embed HTML" option.
+                         // However, we'll try with viewform and if there are issues, the user might need the embed-specific URL.
+                         console.log("Using standard viewform URL. For best results, consider using the embeddable URL from Google Forms' 'Send' dialog.");
+                    } else if (!embedUrl.includes('/e/')) {
+                        // If it's not a viewform and not an embed link, it might be an edit link, which won't work.
+                        formContainer.innerHTML = `<p class="message">Error: The provided URL does not seem to be a valid Google Form view or embed URL. Please check the link and try again. It should typically contain '/viewform' or '/e/'.</p>`;
+                        return;
+                    }
+
+
+                    const iframe = document.createElement('iframe');
+                    iframe.setAttribute('src', embedUrl);
+                    iframe.setAttribute('frameborder', '0');
+                    iframe.setAttribute('marginheight', '0');
+                    iframe.setAttribute('marginwidth', '0');
+                    iframe.onload = () => {
+                        if (loadingMessage) {
+                            loadingMessage.style.display = 'none';
+                        }
+                    };
+                    iframe.onerror = () => {
+                        formContainer.innerHTML = `<p class="message">Error: Could not load the form. Please check the URL and your internet connection.</p>`;
+                    };
+
+                    // Clear the container and append the iframe
+                    formContainer.innerHTML = ''; // Remove loading message or previous error
+                    formContainer.appendChild(iframe);
+                } else {
+                    formContainer.innerHTML = `<p class="message">Error: Invalid Google Form URL provided. It must start with "https://docs.google.com/forms/".</p>`;
+                }
+            } else {
+                formContainer.innerHTML = `<p class="message">No Google Form URL provided. <br><br>Please add "?formUrl=YOUR_GOOGLE_FORM_LINK" to the end of the current URL in your address bar. <br><br><strong>Example:</strong><br> .../yourfile.html?formUrl=https://docs.google.com/forms/d/e/your_form_id/viewform</p>`;
+            }
+
+            // PWA Service Worker Registration (Optional but recommended for full PWA capabilities)
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('sw.js')
+                .then(registration => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                }).catch(error => {
+                    console.error('Service Worker registration failed:', error);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

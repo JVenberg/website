@@ -1,0 +1,16 @@
+{
+  "name": "Google Form Viewer PWA",
+  "short_name": "FormViewer",
+  "description": "A PWA wrapper for displaying Google Forms.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#007bff",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
