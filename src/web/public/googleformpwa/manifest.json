@@ -1,5 +1,6 @@
 {
   "name": "Google Form Viewer PWA",
+  "id": "com.googleformviewer",
   "short_name": "FormViewer",
   "description": "A PWA wrapper for displaying Google Forms.",
   "start_url": "index.html",
