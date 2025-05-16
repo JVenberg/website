@@ -89,16 +89,6 @@
             } else {
                 formContainer.innerHTML = `<p class="message">No Google Form URL provided. <br><br>Please add "?formUrl=YOUR_GOOGLE_FORM_LINK" to the end of the current URL in your address bar. <br><br><strong>Example:</strong><br> .../yourfile.html?formUrl=https://docs.google.com/forms/d/e/your_form_id/viewform</p>`;
             }
-
-            // PWA Service Worker Registration (Optional but recommended for full PWA capabilities)
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('sw.js')
-                .then(registration => {
-                    console.log('Service Worker registered with scope:', registration.scope);
-                }).catch(error => {
-                    console.error('Service Worker registration failed:', error);
-                });
-            }
         });
     </script>
 </body>
